@@ -30,10 +30,17 @@ class App extends Component {
     }
 
     render() {
+
+        const style= {
+            backgroundColor : 'grey',
+            fontSize: '12px',
+            cursor: 'pointer',
+            padding: '8px'
+        }
         return (
             <div className="App">
                 <h1 className="App-title">Welcome to React app again and for the last time</h1>
-                <button onClick={this.handleClick}> click here</button>
+                <button onClick={this.handleClick} style={style}> click here</button>
                 <Adam name={this.state.adam[0].name} age={this.state.adam[0].age} click={this.handleClick}/>
                 <Adam name={this.state.adam[1].name} age={this.state.adam[1].age} changed={this.inputChange}>lalaland</Adam>
                 <Adam name={'hadis'} age={18} click={this.handleClick}> sooski</Adam>
