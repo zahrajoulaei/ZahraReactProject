@@ -6,16 +6,15 @@ import Adam from './Adam/Adam';
 class App extends Component {
     state = {
         adam: [
-            {name: 'fariborz', age: 63},
-            {name: 'abolfazl', age: 33},
-            {name: 'meti', age: 44}
+            {id: 'zlxlzxzx', name: 'fariborz', age: 63},
+            {id: 'dkf;dskfl#', name: 'abolfazl', age: 33},
+            {id: 'fojisdj^', name: 'meti', age: 44}
         ],
         dispalyAdams : false
     };
 
 
     deleteAdamHandler = (adamIndex)=> {
-        // const adam = this.state.adam
         const adam = [...this.state.adam];
         adam.splice(adamIndex,1);
         this.setState({
@@ -28,7 +27,6 @@ class App extends Component {
         this.setState({
             dispalyAdams : !showIt
         })
-
     };
 
     render() {
@@ -50,7 +48,9 @@ class App extends Component {
                     {
                         return <Adam name = {mapshode.name}
                                      age = {mapshode.age}
-                                     click = { ()=> this.deleteAdamHandler(index) }/>
+                                     click = { ()=> this.deleteAdamHandler(index) }
+                                     key={mapshode.id}
+                        />
                     })}
                  </div>
             )
