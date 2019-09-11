@@ -8,9 +8,10 @@ class App extends Component {
         adam: [
             {name: 'fariborz', age: 63},
             {name: 'abolfazl', age: 33},
+            {name: 'meti', age: 44}
         ],
         dispalyAdams : false
-    }
+    };
 
      handleClick = () => {
         this.setState({
@@ -28,7 +29,7 @@ class App extends Component {
                 {name: 'parisa', age: 33},
             ]}
         )
-    }
+    };
 
     toggleButton = ()=> {
         const showIt = this.state.dispalyAdams;
@@ -36,7 +37,7 @@ class App extends Component {
             dispalyAdams : !showIt
         })
 
-    }
+    };
 
     render() {
 
@@ -48,17 +49,19 @@ class App extends Component {
             borderRadius: '6px',
             outline : 'none'
         };
+
         let adams = null;
         if (this.state.dispalyAdams){
             adams =(
                 <div>
-                <Adam name={this.state.adam[0].name} age={this.state.adam[0].age} changed={this.inputChange}/>
-                <Adam name={this.state.adam[1].name} age={this.state.adam[1].age} >lalaland</Adam>
-                <Adam name={'hadis'} age={18} click={this.handleClick}> sooski</Adam>
-            </div>
+                    {this.state.adam.map( mapshode =>
+                    {
+                        return <Adam name = {mapshode.name}
+                                     age = {mapshode.age} />
+                    })}
+                 </div>
             )
-
-        };
+        }
         return (
             <div className="App">
                 <h1 className="App-title">Welcome to React app again and for the last time</h1>
