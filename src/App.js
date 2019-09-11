@@ -8,7 +8,8 @@ class App extends Component {
         adam: [
             {name: 'fariborz', age: 63},
             {name: 'abolfazl', age: 33},
-        ]
+        ],
+        dispalyAdams : false
     }
 
      handleClick = () => {
@@ -29,21 +30,37 @@ class App extends Component {
         )
     }
 
+    toggleButton = ()=> {
+        const showIt = this.state.dispalyAdams;
+        this.setState({
+            dispalyAdams : !showIt
+        })
+
+    }
+
     render() {
 
         const style= {
-            backgroundColor : 'grey',
+            backgroundColor : '#eee',
             fontSize: '12px',
             cursor: 'pointer',
-            padding: '8px'
+            padding: '8px',
+            borderRadius: '6px',
+            outline : 'none'
         }
         return (
             <div className="App">
                 <h1 className="App-title">Welcome to React app again and for the last time</h1>
-                <button onClick={this.handleClick} style={style}> click here</button>
-                <Adam name={this.state.adam[0].name} age={this.state.adam[0].age} click={this.handleClick}/>
-                <Adam name={this.state.adam[1].name} age={this.state.adam[1].age} changed={this.inputChange}>lalaland</Adam>
-                <Adam name={'hadis'} age={18} click={this.handleClick}> sooski</Adam>
+                <button onClick={this.toggleButton} style={style}> Toggle Adams here!</button>
+                { this.state.dispalyAdams ?
+                    <div>
+                    <Adam name={this.state.adam[0].name} age={this.state.adam[0].age} click={this.handleClick}/>
+                    <Adam name={this.state.adam[1].name} age={this.state.adam[1].age} changed={this.inputChange}>lalaland</Adam>
+                    <Adam name={'hadis'} age={18} click={this.handleClick}> sooski</Adam>
+                </div>
+                    :
+                    null
+                }
             </div>
         );
 
