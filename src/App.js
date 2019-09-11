@@ -47,20 +47,23 @@ class App extends Component {
             padding: '8px',
             borderRadius: '6px',
             outline : 'none'
-        }
+        };
+        let adams = null;
+        if (this.state.dispalyAdams){
+            adams =(
+                <div>
+                <Adam name={this.state.adam[0].name} age={this.state.adam[0].age} changed={this.inputChange}/>
+                <Adam name={this.state.adam[1].name} age={this.state.adam[1].age} >lalaland</Adam>
+                <Adam name={'hadis'} age={18} click={this.handleClick}> sooski</Adam>
+            </div>
+            )
+
+        };
         return (
             <div className="App">
                 <h1 className="App-title">Welcome to React app again and for the last time</h1>
                 <button onClick={this.toggleButton} style={style}> Toggle Adams here!</button>
-                { this.state.dispalyAdams ?
-                    <div>
-                    <Adam name={this.state.adam[0].name} age={this.state.adam[0].age} click={this.handleClick}/>
-                    <Adam name={this.state.adam[1].name} age={this.state.adam[1].age} changed={this.inputChange}>lalaland</Adam>
-                    <Adam name={'hadis'} age={18} click={this.handleClick}> sooski</Adam>
-                </div>
-                    :
-                    null
-                }
+                {adams}
             </div>
         );
 
