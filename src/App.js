@@ -13,22 +13,14 @@ class App extends Component {
         dispalyAdams : false
     };
 
-     handleClick = () => {
-        this.setState({
-            adam: [
-                {name: 'ziba', age: 63},
-                {name: 'parisa', age: 33},
-            ]}
-        )
-    };
 
-    inputChange = (event)=> {
+    deleteAdamHandler = (adamIndex)=> {
+        // const adam = this.state.adam
+        const adam = [...this.state.adam];
+        adam.splice(adamIndex,1);
         this.setState({
-            adam: [
-                {name: event.target.value, age: 63},
-                {name: 'parisa', age: 33},
-            ]}
-        )
+        adam : adam
+        });
     };
 
     toggleButton = ()=> {
@@ -54,10 +46,11 @@ class App extends Component {
         if (this.state.dispalyAdams){
             adams =(
                 <div>
-                    {this.state.adam.map( mapshode =>
+                    {this.state.adam.map( (mapshode,index) =>
                     {
                         return <Adam name = {mapshode.name}
-                                     age = {mapshode.age} />
+                                     age = {mapshode.age}
+                                     click = { ()=> this.deleteAdamHandler(index) }/>
                     })}
                  </div>
             )
