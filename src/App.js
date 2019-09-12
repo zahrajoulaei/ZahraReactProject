@@ -13,6 +13,19 @@ class App extends Component {
         dispalyAdams : false
     };
 
+    nameChanger = (event , id)=> {
+        const adamIndex = this.state.adam.findIndex(p =>{
+            return p.id === id;
+        });
+        const person = {...this.state.adam[adamIndex]};
+        person.name = event.target.value;
+
+        const persons = [...this.state.adam];
+        persons[adamIndex] = person;
+
+        this.setState({adam: persons});
+    };
+
 
     deleteAdamHandler = (adamIndex)=> {
         const adam = [...this.state.adam];
@@ -49,7 +62,8 @@ class App extends Component {
                         return <Adam name = {mapshode.name}
                                      age = {mapshode.age}
                                      click = { ()=> this.deleteAdamHandler(index) }
-                                     key={mapshode.id}
+                                     key= {mapshode.id}
+                                     changed = {(event)=> {this.nameChanger(event, mapshode.id)} }
                         />
                     })}
                  </div>
