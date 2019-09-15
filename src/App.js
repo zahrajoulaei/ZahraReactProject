@@ -45,7 +45,8 @@ class App extends Component {
     render() {
 
         const style= {
-            backgroundColor : '#eee',
+            backgroundColor : 'green',
+            color: 'white',
             fontSize: '12px',
             cursor: 'pointer',
             padding: '8px',
@@ -68,6 +69,8 @@ class App extends Component {
                     })}
                  </div>
             )
+
+            style.backgroundColor = 'red';
         }
         return (
             <div className="App">
