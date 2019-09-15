@@ -6,3 +6,9 @@
     border: 1px solid #eee;
     padding:16px;
 }
+.red {
+    color:darkred;
+}
+.bold {
+    font-weight: bold;
+}

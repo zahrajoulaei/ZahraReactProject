@@ -68,13 +68,22 @@ class App extends Component {
                         />
                     })}
                  </div>
-            )
+            );
 
             style.backgroundColor = 'red';
+        }
+
+        const classes = [];
+        if(this.state.adam.length<=2){
+            classes.push('red');
+        }
+        if (this.state.adam.length<=1){
+            classes.push('bold');
         }
         return (
             <div className="App">
                 <h1 className="App-title">Welcome to React app again and for the last time</h1>
+                <p className={classes.join(' ')}>sometimes you see me bold,red or normal </p>
                 <button onClick={this.toggleButton} style={style}> Toggle Adams here!</button>
                 {adams}
             </div>
