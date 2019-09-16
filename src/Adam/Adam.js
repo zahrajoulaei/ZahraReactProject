@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Radium from 'radium';
 import './Adam.css';
 
 const adam = (props)=> {
@@ -13,4 +13,4 @@ const adam = (props)=> {
     )
 };
 
-export default adam;
+export default Radium(adam);
