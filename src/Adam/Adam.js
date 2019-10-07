@@ -1,6 +1,5 @@
 import React from 'react';
-import Radium from 'radium';
-import classe from './Adam.css';
+import classes from './Adam.css';
 
 const adam = (props)=> {
     const adamStyle= {
@@ -9,7 +8,7 @@ const adam = (props)=> {
         }
     };
     return (
-        <div className="Adam" style={adamStyle}>
+        <div className={classes.Adam} style={adamStyle}>
         <h1 onClick={props.click}>hello i am {props.name} and i have {props.age}years old</h1>
         <span >{props.children}</span>
         <input type="text" onChange={props.changed}/>
@@ -18,4 +17,4 @@ const adam = (props)=> {
     )
 };
 
-export default Radium(adam);
+export default adam;

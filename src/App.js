@@ -52,10 +52,6 @@ class App extends Component {
             padding: '8px',
             borderRadius: '6px',
             outline : 'none',
-            ':hover' : {
-                backgroundColor: 'lightgreen',
-                color: 'black'
-            }
         };
 
         let adams = null;
@@ -75,29 +71,25 @@ class App extends Component {
             );
 
             style.backgroundColor = 'red';
-            style[':hover'] = {
-                backgroundColor: 'salmon',
-                    color: 'black'
-            }
         }
 
-        const classes = [];
+        const assignedClasses = [];
         if(this.state.adam.length<=2){
-            classes.push('red');
+            assignedClasses.push(classes.red);
         }
         if (this.state.adam.length<=1){
-            classes.push('bold');
+            assignedClasses.push(classes.bold);
         }
         return (
-                <div className="App">
+                <div className={classes.App}>
                     <h1 className="App-title">Welcome to React app again and for the last time</h1>
-                    <p className={classes.join(' ')}>sometimes you see me bold,red or normal </p>
+                    <p className={assignedClasses.join(' ')}>sometimes you see me bold,red or normal </p>
                     <button onClick={this.toggleButton} style={style}> Toggle Adams here!</button>
                     {adams}
                 </div>
         );
 
-    }
+    } 
 }
 
 export default App;
