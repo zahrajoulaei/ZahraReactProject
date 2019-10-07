@@ -1,6 +1,6 @@
 import React from 'react';
 import Radium from 'radium';
-import './Adam.css';
+import classe from './Adam.css';
 
 const adam = (props)=> {
     const adamStyle= {
