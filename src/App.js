@@ -43,18 +43,8 @@ class App extends Component {
     };
 
     render() {
-
-        const style= {
-            backgroundColor : 'green',
-            color: 'white',
-            fontSize: '12px',
-            cursor: 'pointer',
-            padding: '8px',
-            borderRadius: '6px',
-            outline : 'none',
-        };
-
         let adams = null;
+        let btnClass = '';
         if (this.state.dispalyAdams){
             adams =(
                 <div>
@@ -69,8 +59,7 @@ class App extends Component {
                     })}
                  </div>
             );
-
-            style.backgroundColor = 'red';
+                    btnClass = classes.Red;
         }
 
         const assignedClasses = [];
@@ -84,7 +73,7 @@ class App extends Component {
                 <div className={classes.App}>
                     <h1 className="App-title">Welcome to React app again and for the last time</h1>
                     <p className={assignedClasses.join(' ')}>sometimes you see me bold,red or normal </p>
-                    <button onClick={this.toggleButton} style={style}> Toggle Adams here!</button>
+                    <button onClick={this.toggleButton} className={btnClass}> Toggle Adams here!</button>
                     {adams}
                 </div>
         );

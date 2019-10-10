@@ -6,9 +6,9 @@
     border: 1px solid #eee;
     padding:16px;
 }
-.red {
-    color:darkred;
-}
-.bold {
-    font-weight: bold;
+
+@media(min-width: 500px) {
+	.Adam {
+		width: 450px;
+	}
 }
