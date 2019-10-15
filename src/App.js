@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Adam from './Adam/Adam';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 
 class App extends Component {
@@ -49,14 +50,15 @@ class App extends Component {
             adams =(
                 <div>
                     {this.state.adam.map( (mapshode,index) =>
-                    {
-                        return <Adam name = {mapshode.name}
-                                     age = {mapshode.age}
+                        {
+                        return <ErrorBoundary key= {mapshode.id}>
+                                <Adam name = {mapshode.name}
+                                    age = {mapshode.age}
                                      click = { ()=> this.deleteAdamHandler(index) }
-                                     key= {mapshode.id}
-                                     changed = {(event)=> {this.nameChanger(event, mapshode.id)} }
-                        />
-                    })}
+                                     changed = {(event)=> {this.nameChanger(event, mapshode.id)} }/>
+                                </ErrorBoundary>
+                        } 
+                    )}
                  </div>
             );
                     btnClass = classes.Red;
