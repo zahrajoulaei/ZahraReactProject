@@ -1,5 +1,6 @@
 
-#Zahra React Project
+# Zahra React Project
+
 I followed a tutorial in Udemy and made this app on top of react based on what I learnt step by step from the tutorial
 I will update this app regulary during my course 
 
