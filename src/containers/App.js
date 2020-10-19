@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Adam from '../components/Persons/Adam/Adam';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
+import Persons from '../components/Persons/ Persons'
+import Cockpit from '../components/cockpit/cockpit'
 
 
 class App extends Component {
@@ -14,68 +14,46 @@ class App extends Component {
         dispalyAdams : false
     };
 
-    nameChanger = (event , id)=> {
-        const adamIndex = this.state.adam.findIndex(p =>{
+    nameChangeHandler = (event , id)=> {
+        const personIndex = this.state.adam.findIndex(p => {
             return p.id === id;
         });
-        const person = {...this.state.adam[adamIndex]};
+
+        const person = {...this.state.adam[personIndex]};
         person.name = event.target.value;
 
-        const persons = [...this.state.adam];
-        persons[adamIndex] = person;
+        const adam = [...this.state.adam];
+        adam[personIndex] = person;
 
-        this.setState({adam: persons});
+        this.setState({adam: adam});
     };
 
 
-    deleteAdamHandler = (adamIndex)=> {
+    deleteAdamHandler = (personIndex)=> {
         const adam = [...this.state.adam];
-        adam.splice(adamIndex,1);
+        adam.splice(personIndex,1);
         this.setState({
         adam : adam
         });
     };
 
-    toggleButton = ()=> {
+    toggleButton = () => {
         const showIt = this.state.dispalyAdams;
-        this.setState({
-            dispalyAdams : !showIt
-        })
+        this.setState({ dispalyAdams : !showIt })
     };
 
     render() {
         let adams = null;
-        let btnClass = '';
-        if (this.state.dispalyAdams){
-            adams =(
-                <div>
-                    {this.state.adam.map( (mapshode,index) =>
-                        {
-                        return <ErrorBoundary key= {mapshode.id}>
-                                <Adam name = {mapshode.name}
-                                    age = {mapshode.age}
-                                     click = { ()=> this.deleteAdamHandler(index) }
-                                     changed = {(event)=> {this.nameChanger(event, mapshode.id)} }/>
-                                </ErrorBoundary>
-                        } 
-                    )}
-                 </div>
-            );
-                    btnClass = classes.Red;
-        }
-
-        const assignedClasses = [];
-        if(this.state.adam.length<=2){
-            assignedClasses.push(classes.red);
-        }
-        if (this.state.adam.length<=1){
-            assignedClasses.push(classes.bold);
+        if (this.state.dispalyAdams) {
+            adams = <Persons adam = { this.state.adam }
+                         clicked = { this.deleteAdamHandler }
+                         changed = { this.nameChangeHandler }/>;
         }
         return (
                 <div className={classes.App}>
-                    <h1 className="App-title">Welcome to React app again and for the last time</h1>
-                    <p className={assignedClasses.join(' ')}>sometimes you see me bold,red or normal </p>
-                    <button onClick={this.toggleButton} className={btnClass}> Toggle Adams here!</button>
+                    <Cockpit displayAdams = {this.state.dispalyAdams}
+                             adam = {this.state.adam}
+                             clicked = {this.toggleButton}/>
                     {adams}
                 </div>
         );
